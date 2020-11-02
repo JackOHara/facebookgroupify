@@ -1,0 +1,8 @@
+node_modules
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+resources/node_modules
+# Parcel default cache directory
+.parcel-cache
