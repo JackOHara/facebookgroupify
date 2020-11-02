@@ -1,0 +1,25 @@
+{
+  "name": "cdktest",
+  "version": "0.1.0",
+  "bin": {
+    "cdktest": "bin/cdktest.js"
+  },
+  "scripts": {
+    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
+    "cdk": "cdk",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.71.0",
+    "aws-cdk": "1.71.0",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-dynamodb": "^1.71.0",
+    "@aws-cdk/aws-lambda": "^1.71.0",
+    "@aws-cdk/aws-lambda-event-sources": "^1.71.0",
+    "@aws-cdk/aws-s3": "^1.71.0",
+    "@aws-cdk/aws-ssm": "^1.71.0",
+    "@aws-cdk/core": "1.71.0"
+  }
+}
