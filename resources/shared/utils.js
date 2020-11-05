@@ -1,18 +1,33 @@
 const winston = require('winston');
 
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console(),
-  ],
-});
+let logger;
+
+const getLogger = (meta) => {
+  if (Object.keys(meta) > 0 || !logger) {
+    logger = winston.createLogger({
+      level: 'info',
+      defaultMeta: meta,
+      format: winston.format.combine(
+        winston.format.json(),
+        winston.format.timestamp(),
+      ),
+      transports: [
+        new winston.transports.Console(),
+      ],
+    });
+  }
+  logger.format = winston.format.combine(
+    winston.format.json(),
+    winston.format.timestamp(),
+  );
+  return logger;
+};
 
 module.exports = {
   sleep: (time) => new Promise((resolve) => {
     setTimeout(resolve, time);
   }),
-  getLogger: () => logger,
+  getLogger: () => getLogger({}),
   parseKeyMetadata: (key) => {
     // Key format: {directory}/{groupId}/{playlistId}/{jobId}/{batch}.json
     const keyMetadata = {};

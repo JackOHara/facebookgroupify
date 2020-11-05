@@ -12,10 +12,19 @@
   "devDependencies": {
     "@aws-cdk/assert": "1.71.0",
     "aws-cdk": "1.71.0",
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1"
   },
   "dependencies": {
     "@aws-cdk/aws-dynamodb": "^1.71.0",
+    "@aws-cdk/aws-ec2": "^1.71.0",
+    "@aws-cdk/aws-ecr-assets": "^1.71.0",
+    "@aws-cdk/aws-ecs": "^1.71.0",
+    "@aws-cdk/aws-ecs-patterns": "^1.71.0",
+    "@aws-cdk/aws-events": "^1.71.0",
     "@aws-cdk/aws-lambda": "^1.71.0",
     "@aws-cdk/aws-lambda-event-sources": "^1.71.0",
     "@aws-cdk/aws-s3": "^1.71.0",

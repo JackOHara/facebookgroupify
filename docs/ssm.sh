@@ -1,23 +1,7 @@
 
 aws ssm put-parameter \
-    --name "/FacebookGroupify/SpotifyClientId" \
+    --name "/FacebookGroupify/FacebookUsername" \
     --type "String" \
-    --value "" \
+    --value "jack_ohara@live.co.uk" \
     --overwrite
-aws ssm put-parameter \
-    --name "/FacebookGroupify/SpotifyClientSecret" \
-    --type "SecureString" \
-    --value "" \
-    --overwrite
-aws ssm put-parameter \
-    --name "/FacebookGroupify/SpotifyRefreshToken" \
-    --type "SecureString" \
-    --value "" \
-    --overwrite
-
-aws ssm put-parameter --cli-input-json '{
-  "Name": "/FacebookGroupify/SpotifyRedirectUri",
-  "Value": "http://localhost:3000/login",
-  "Type": "String",
-  "Overwrite": true
-}'
+aws ssm put-parameter --name "/FacebookGroupify/FacebookPassword" --type "SecureString" --value "Ayimalegendinit44" --overwrite

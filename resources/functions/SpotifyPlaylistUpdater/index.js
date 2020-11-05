@@ -18,6 +18,8 @@ const chunks = (array, size) => {
 
 const main = async (bucket, key) => {
   const keyMetadata = utils.parseKeyMetadata(key);
+  logger.defaultMeta = { ...keyMetadata, bucket };
+
   const spotifyIds = await s3.getFromS3(bucket, key);
   logger.info(`Adding ${spotifyIds.length} songs from Facebook group ${keyMetadata.groupId} to playlist ${keyMetadata.playlistId}`);
 
@@ -39,13 +41,12 @@ const main = async (bucket, key) => {
       logger.info(`Batch inserted into ${keyMetadata.playlistId}`);
     }).catch(async () => {
       await Promise.all(spotifyIdBatch.map(async (spotifyId) => {
-        await spotify.insertTrackIntoPlaylist(keyMetadata.playlistId, id);
-      }))
+        await spotify.insertTrackIntoPlaylist(keyMetadata.playlistId, spotifyId);
+      }));
     });
   }));
 
-  logger.info("Spotify playlist update complete");
-
+  logger.info('Spotify playlist update complete');
 };
 
 // node -e 'require("./index").local("facebookgroupify", "titles/youtube/288793014548229/3VplcKeh8xdbII33VdS4gH/47c1d219-8cef-49aa-a966-978338276845/3.json")'

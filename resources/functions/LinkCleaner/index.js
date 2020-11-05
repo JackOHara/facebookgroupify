@@ -34,6 +34,8 @@ const fetchIdsFromLinks = async (links) => {
 
 const main = async (bucket, key) => {
   const keyMetadata = utils.parseKeyMetadata(key);
+  logger.defaultMeta = { ...keyMetadata, bucket };
+
   const links = await s3.getFromS3(bucket, key);
 
   logger.info(`Processing ${links.length} links`);

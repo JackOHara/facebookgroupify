@@ -20,6 +20,8 @@ const fetchTitleMetadataForYoutubeIds = async (youtubeIds) => {
 };
 const main = async (bucket, key) => {
   const keyMetadata = utils.parseKeyMetadata(key);
+  logger.defaultMeta = { ...keyMetadata, bucket };
+
   const youtubeIds = await s3.getFromS3(bucket, key);
   logger.info(`Processing ${youtubeIds.length} Youtube IDs`);
   const youtubeIdTitleMap = await fetchTitleMetadataForYoutubeIds(youtubeIds);

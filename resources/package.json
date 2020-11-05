@@ -10,19 +10,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "aws-sdk": "^2.768.0",
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.3.1"
+    "aws-sdk": "^2.768.0"
   },
   "dependencies": {
-    "@aws-cdk/aws-dynamodb": "^1.71.0",
-    "@aws-cdk/aws-ssm": "^1.71.0",
+    "fs": "0.0.1-security",
     "node-fetch": "^2.6.1",
     "p-limit": "^3.0.2",
     "spotify-web-api-node": "^5.0.0",
     "string-similarity": "^4.0.2",
-    "winston": "^3.3.3"
+    "util": "^0.12.3",
+    "uuid": "^8.3.1",
+    "winston": "^3.3.3",
+    "yargs": "^16.0.3"
   }
 }

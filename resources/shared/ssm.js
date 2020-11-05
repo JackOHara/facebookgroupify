@@ -17,4 +17,15 @@ module.exports = {
     const result = await ssm.getParameter(params).promise();
     return result.Parameter.Value;
   },
+  writeParameter: async (parameterName, parameterValue, encrypt) => {
+    logger.debug(`Writing parameter for ${parameterName}`);
+    const parameterType = encrypt ? 'SecureString' : 'String';
+    const params = {
+      Name: parameterName,
+      Value: parameterValue,
+      Type: parameterType,
+      Overwrite: true,
+    };
+    await ssm.putParameter(params).promise();
+  },
 };
