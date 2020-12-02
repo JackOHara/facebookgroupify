@@ -1,4 +1,5 @@
 ## Should do
+- Use fargate spot pricing for tasks
 - CDK deployment in Github Actions
 - Unit test and build
 - Docs
