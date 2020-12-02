@@ -5,7 +5,7 @@ const utils = require('../../shared/utils.js');
 const s3 = require('../../shared/s3.js');
 const spotify = require('../../shared/spotify.js');
 
-const logger = utils.getLogger();
+let logger = utils.getLogger();
 const limit = pLimit(1);
 
 const NAME_SIMILARITY_THRESHOLD = 0.7;
@@ -99,6 +99,9 @@ const findSpotifyMatches = async (titles) => {
 
 const main = async (bucket, key) => {
   const keyMetadata = utils.parseKeyMetadata(key);
+  logger = utils.getLogger();
+  logger.defaultMeta = { ...keyMetadata, bucket };
+
   const youtubeTitles = await s3.getFromS3(bucket, key);
   await spotify.initialise();
 

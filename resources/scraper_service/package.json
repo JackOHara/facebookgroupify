@@ -1,0 +1,32 @@
+{
+  "name": "group-link-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.1",
+    "p-limit": "^3.0.2",
+    "spotify-web-api-node": "^5.0.0",
+    "string-similarity": "^4.0.2",
+    "util": "^0.12.3",
+    "uuid": "^8.3.1",
+    "winston": "^3.3.3",
+    "yargs": "^16.0.3",
+    "puppeteer": "^5.4.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.768.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react-hooks": "^4.0.0"
+  }
+}
