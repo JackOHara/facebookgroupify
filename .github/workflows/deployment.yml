@@ -2,7 +2,7 @@ name: Deployment
 
 on:
   push:
-    branches: [ actions_setup ] #main
+    branches: [ main ]
   workflow_dispatch:
     inputs:
       home:

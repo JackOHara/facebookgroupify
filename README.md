@@ -11,7 +11,9 @@ Facebook Groupify scrapes music links posted into Facebook groups and collates t
 
 ## Running Locally
 ## Deployment
-Merges to master will be deployed to AWS automatically via Github Actions. To deploy from your local machine ensure run the following.
+Merges to master will deploy to AWS automatically via Github Actions. 
+
+To deploy from your local machine run the following:
 ```
 npm i aws-cdk --global
 npm i
