@@ -3,6 +3,7 @@ const sharedUtil = require('./utils.js');
 
 const ddb = new AWS.DynamoDB({
   apiVersion: '2012-08-10',
+  region: 'eu-west-1'
 });
 const logger = sharedUtil.getLogger();
 

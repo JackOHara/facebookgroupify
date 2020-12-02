@@ -3,7 +3,7 @@ const sharedUtil = require('./utils.js');
 
 const logger = sharedUtil.getLogger();
 
-const s3 = new AWS.S3();
+const s3 = new AWS.S3({ apiVersion: '2006-03-01', region: 'eu-west-1' });
 
 module.exports = {
   putToS3: async (bucket, key, data) => {

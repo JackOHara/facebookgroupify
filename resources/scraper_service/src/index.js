@@ -4,7 +4,6 @@ const { v4: uuidv4 } = require('uuid');
 const properties = require('./properties');
 const facebookGroupHandler = require('./facebook');
 const utils = require('../../shared/utils.js');
-const s3 = require('../../shared/s3.js');
 const ssm = require('../../shared/ssm.js');
 
 const logger = utils.getLogger();
@@ -30,10 +29,10 @@ const getDefaultPage = async (browser) => {
 };
 
 (async () => {
-  const groupId = process.env.GROUP_ID;
-  const playlistId = process.env.PLAYLIST_ID;
-  const runLength = Number(process.env.RUN_LENGTH);
-  const bucket = process.env.BUCKET_NAME;
+  const { groupId } = properties;
+  const { playlistId } = properties;
+  const { runLength } = properties;
+  const { bucket } = properties;
   const jobId = uuidv4();
   logger.defaultMeta = {
     groupId, playlistId, bucket, jobId,
@@ -70,18 +69,19 @@ const getDefaultPage = async (browser) => {
     await ssm.writeParameter('/FacebookGroupify/FacebookCookies', JSON.stringify(freshCookies, null, 2), true);
   });
 
-  const links = await facebookGroupHandler.get(groupId, page, runLength);
+  const links = await facebookGroupHandler.get(groupId, playlistId, bucket, jobId, page, runLength);
 
   logger.info(`Found ${links.length} links in group ${groupId}`);
 
-  const linksKey = `links/${groupId}/${playlistId}/${jobId}/batch_1.json`;
-  if (links.length > 0) {
-    await s3.putToS3(bucket, linksKey, links);
-  }
+  // const linksKey = `links/${groupId}/${playlistId}/${jobId}/batch_1.json`;
+  // if (links.length > 0) {
+  //   await s3.putToS3(bucket, linksKey, links);
+  // }
 })().then(() => {
   logger.info('Scraping complete');
   process.exit(0);
 }).catch((error) => {
   logger.error('Fatal error in link-scraper: ', error);
+  logger.error(error);
   process.exit(1);
 });

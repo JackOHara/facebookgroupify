@@ -35,15 +35,25 @@ const main = async (bucket, key) => {
     }
   }));
 
-  spotifyIdBatches = chunks(spotifyIdsNotInPlaylist, 50);
+  const spotifyIdBatches = chunks(spotifyIdsNotInPlaylist, 50);
   await Promise.all(spotifyIdBatches.map(async (spotifyIdBatch) => {
-    await spotify.insertTracksIntoPlaylist(keyMetadata.playlistId, spotifyIdBatch).then(async () => {
-      logger.info(`Batch inserted into ${keyMetadata.playlistId}`);
-    }).catch(async () => {
-      await Promise.all(spotifyIdBatch.map(async (spotifyId) => {
-        await spotify.insertTrackIntoPlaylist(keyMetadata.playlistId, spotifyId);
-      }));
-    });
+    await spotify.insertTracksIntoPlaylist(keyMetadata.playlistId, spotifyIdBatch)
+      .then(async () => {
+        logger.info(`Batch inserted into ${keyMetadata.playlistId}`);
+      }).then(async () => {
+        await Promise.all(spotifyIdBatch.map(async (spotifyId) => {
+          await ddb.putPlaylistTrackInTable(keyMetadata.playlistId, spotifyId);
+        }));
+      }).catch(async () => {
+        await Promise.all(spotifyIdBatch.map(async (spotifyId) => {
+          await spotify.insertTrackIntoPlaylist(keyMetadata.playlistId, spotifyId)
+            .then(async () => {
+              await Promise.all(spotifyIdBatch.map(async () => {
+                await ddb.putPlaylistTrackInTable(keyMetadata.playlistId, spotifyId);
+              }));
+            });
+        }));
+      });
   }));
 
   logger.info('Spotify playlist update complete');
