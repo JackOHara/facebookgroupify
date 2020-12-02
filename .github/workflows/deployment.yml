@@ -4,11 +4,6 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-    inputs:
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
 
 
 jobs:
