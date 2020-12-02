@@ -1,12 +1,3 @@
 # facebookgroupify
+![Deployment Status](https://github.com/jackohara/facebookgroupify/workflows/Deployment/badge.svg)
 
-
-Possible easy solution to module issue
-
-Code
-    App
-        src
-        functions
-        shared
-        docker
-Research other options
