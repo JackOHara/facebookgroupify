@@ -44,4 +44,4 @@ jobs:
           npm install
           npm i aws-cdk --global
           echo "Deploying FacebookGroupify"
-          echo "test, and deploy your project.""
+          echo "test, and deploy your project."
