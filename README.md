@@ -65,7 +65,7 @@ New groups for scraping can be added in the deployment code. Adding the followin
   cluster: our ECS cluster (remains unchanged)
   groupId: ID representing the FB group (found at in group URL e.g. www.facebook.com/groups/288793014548229)
   playlistId: Spotify playlist ID
-  runTime: how long the scraping job should run for (groups with high activity should have more time)
+  runTime: how long (in minutes) the scraping job should run for (groups with high activity should have more time)
 */
 this.scheduleScrape(cluster, '288793014548229', '3CcecGrE2ZZfWcRYx0seK2', 4);
 ```
@@ -73,12 +73,15 @@ this.scheduleScrape(cluster, '288793014548229', '3CcecGrE2ZZfWcRYx0seK2', 4);
 This method of scheduling may change in the future as this is essentially user data and should not live in the code. It is not efficient/scalable to modify the code for every new group.
 
 ## Contributing
-Follow the [Local Development](#local-development) steps to run the stack locally. Create a new branch and commit your change. Open a PR and wait for a review. If the build is passing and the PR is approved then merge to master.
+1. Follow the [Local Development](#local-development) steps to run the stack locally. 
+2. Create a new branch and commit your change. 
+3. Open a PR and wait for a review. Ensure the build is passing.
+4. If the PR is approved then it will be merged to master.
 
 ## Deployments
 On merge to master the stack will be deployed to a production AWS environment via GitHub Actions. The application code and infrastructure lives together as code using [AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/home.html).
 
-To deploy from your machine install aws-cli and CDK. [Your AWS credentials will also need to be configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). 
+To deploy from your machine install ```aws-cli``` and ```aws-cdk```. [Your AWS credentials will also need to be configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). 
 ```bash
 brew install aws-cli
 npm i aws-cdk --global
