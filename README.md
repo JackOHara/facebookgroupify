@@ -41,9 +41,9 @@ A scheduled job triggers a scraping job of a specific playlist/group combo. The 
 - Spotify IDs found are sent to directly to the Spotify Playlist Updater Lambda which is responsible for updating the Spotify playlist with the found song. 
 - Youtube IDs found are sent to a Lambda which fetches additional metadata about the song like the song title. The metadata is saved in S3 and the Spotify Song Matcher Lambda is triggered. This attempts to match song titles found to songs that exist in Spotify. They don't need to be exactly the same but they need to be very similar. Found matches in Spotify are then saved to S3 which triggers the Spotify Playlist updater.
 
-Before inserting a song into a Spotify playlist it checks DynamoDB to see if we have already inserted that song into the playlist. This is used to prevent duplicate songs being inserted and because the Spotify API does not easily allow us to prevent duplicate insertions into a playlist.  
+Before inserting a song into a Spotify playlist it checks DynamoDB to see if we have already inserted that song into the playlist. If not then we add it to the playlist and update our duplicate DynamoDB table to track it's insertion. This is used to prevent duplicate songs being inserted and because the Spotify API does not easily allow us to prevent duplicate insertions into a playlist.
 
-There is quite a lot of saving to S3 and triggering events going on in this app. There are a few reasons behind this but the most important one is **replayability** of events. If a component further down the pipeline is improved later on we can retrigger the processing of data at any stage in the pipeline and thus provide more content with greater matching accuracy.
+There is quite a lot of saving to S3 and triggering events happening in this app. There are a few reasons behind this but the most important one is **replayability** of events. If a component further down the pipeline is improved later on we can retrigger the processing of data at any stage in the pipeline and thus provide more content with greater matching accuracy.
 
 
 ## Local Development
