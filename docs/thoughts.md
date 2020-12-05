@@ -14,3 +14,5 @@ aws ssm put-parameter --name "/FacebookGroupify/FacebookPassword" --type "Secure
 
 
 cdk deploy
+
+
