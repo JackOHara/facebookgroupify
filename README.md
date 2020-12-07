@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-<a href="https://github.com/JackOHara/facebookgroupify/actions?query=workflow%3ABuild"><img src="https://github.com/jackohara/facebookgroupify/workflows/Build/badge.svg"></a>
+<a href="https://github.com/JackOHara/facebookgroupify/actions?query=workflow%3ABuild?branch=main"><img src="https://github.com/jackohara/facebookgroupify/workflows/Build/badge.svg?branch=main"></a>
 <a href="https://github.com/JackOHara/facebookgroupify/actions?query=workflow%3ADeployment"><img src="https://github.com/jackohara/facebookgroupify/workflows/Deployment/badge.svg"></a>
 </p>
 
