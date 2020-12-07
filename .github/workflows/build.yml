@@ -20,4 +20,5 @@ jobs:
           npm i
       - name: Running test suite
         run: |
+          cd resources
           npm test
