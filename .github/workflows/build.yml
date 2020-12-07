@@ -5,7 +5,7 @@ on:
     pull_request: [ main ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out repository
@@ -14,8 +14,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '15'
-      - name: Installing NPM packages
+      - name: Installing packages
         run: |
           cd resources
           npm i
+      - name: Running test suite
+        run: |
           npm test
