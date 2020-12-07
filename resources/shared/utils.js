@@ -27,6 +27,7 @@ module.exports = {
   sleep: (time) => new Promise((resolve) => {
     setTimeout(resolve, time);
   }),
+  replaceAll: (str, replace, replacement) => str.split(replace).join(replacement),
   getLogger: () => getLogger({}),
   parseKeyMetadata: (key) => {
     // Key format: {directory}/{groupId}/{playlistId}/{jobId}/{batch}.json

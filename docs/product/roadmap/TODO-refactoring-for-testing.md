@@ -7,3 +7,6 @@ The code should be refectored in an OOP style so it can be easily unit tested wi
 Bonus points if we use TypeScript. It will lead to quicker feedback when developing and (hopefully) lead to less bugs based around JS looseness. 
 
 A proper build action should be enabled in the repo after tests are added.
+
+
+1. Link cleaner

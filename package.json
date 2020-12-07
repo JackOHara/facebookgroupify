@@ -29,6 +29,7 @@
     "@aws-cdk/aws-lambda-event-sources": "^1.71.0",
     "@aws-cdk/aws-s3": "^1.71.0",
     "@aws-cdk/aws-ssm": "^1.71.0",
-    "@aws-cdk/core": "1.71.0"
+    "@aws-cdk/core": "1.71.0",
+    "winston": "^3.3.3"
   }
 }

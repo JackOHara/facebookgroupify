@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches:  [ main ]
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repository
+        uses: actions/checkout@v2
+      - name: Setting up NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15'
+      - name: Installing packages
+        run: |
+          cd resources
+          npm i
+      - name: Running test suite
+        run: |
+          cd resources
+          npm test

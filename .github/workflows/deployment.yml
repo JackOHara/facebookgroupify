@@ -25,6 +25,9 @@ jobs:
       - name: Installing NPM packages
         run: |
           npm i
+          cd resources
+          npm i
+          cd ../
           npm i aws-cdk --global
       - name: CDK Deploy
         run: cdk deploy

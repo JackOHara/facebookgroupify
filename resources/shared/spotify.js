@@ -20,7 +20,7 @@ const spotifyAuthorization = async (refreshToken) => {
   );
 };
 
-const getSpotifyApi = async () => {
+const getSpotifyApiClient = async () => {
   if (!spotifyApi) {
     const spotifyClientId = await ssm.getParameter('/FacebookGroupify/SpotifyClientId');
     const spotifyClientSecret = await ssm.getParameter('/FacebookGroupify/SpotifyClientSecret');
@@ -37,23 +37,5 @@ const getSpotifyApi = async () => {
 };
 
 module.exports = {
-  initialise: async () => {
-    await getSpotifyApi();
-  },
-  insertTrackIntoPlaylist: async (playlistId, trackId) => {
-    const spotify = await getSpotifyApi();
-    spotify.addTracksToPlaylist(playlistId, [`spotify:track:${trackId}`])
-      .then(logger.info(`Playlist/Track ${playlistId}/${trackId} added to playlist`));
-  },
-  insertTracksIntoPlaylist: async (playlistId, trackIds) => {
-    const spotify = await getSpotifyApi();
-    const fullSpotifyTrackIds = trackIds.map((trackId) => `spotify:track:${trackId}`);
-    await spotify.addTracksToPlaylist(playlistId, fullSpotifyTrackIds)
-      .then(logger.info(`Added ${fullSpotifyTrackIds.length} into playlist ${playlistId}`));
-  },
-  searchTrack: async (songName, songArtist) => {
-    const spotify = await getSpotifyApi();
-    const searchTerm = `track:${songName} artist:${songArtist}`;
-    return spotify.searchTracks(searchTerm).then((data) => data.body.tracks.items);
-  },
+  getSpotifyApiClient,
 };
