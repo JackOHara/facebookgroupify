@@ -1,0 +1,2 @@
+# TODO
+- Force conventional commits
