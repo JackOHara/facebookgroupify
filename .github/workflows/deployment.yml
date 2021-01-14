@@ -28,6 +28,6 @@ jobs:
           cd resources
           npm i
           cd ../
-          npm i aws-cdk --global
+          npm i aws-cdk --global --force
       - name: CDK Deploy
         run: cdk deploy
