@@ -48,20 +48,4 @@ class SpotifyService {
   }
 }
 
-// const getSpotifyService = async () => {
-//   const clientId = await ssm.getParameter('/FacebookGroupify/SpotifyClientId');
-//   const clientSecret = await ssm.getParameter('/FacebookGroupify/SpotifyClientSecret');
-//   const redirectUri = await ssm.getParameter('/FacebookGroupify/SpotifyRedirectUri');
-//   const refreshToken = await ssm.getParameter('/FacebookGroupify/SpotifyRefreshToken');
-
-//   const spotifyWebApi = new SpotifyWebApi({
-//     clientId,
-//     clientSecret,
-//     redirectUri,
-//   });
-//   const spotifyService = new SpotifyService(spotifyWebApi);
-//   await spotifyService.initialise(refreshToken);
-//   return spotifyService;
-// };
-
 module.exports = SpotifyService;
