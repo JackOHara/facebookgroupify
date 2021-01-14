@@ -49,4 +49,4 @@ jobs:
           cd ../
           npm i aws-cdk --global
       - name: CDK Synth
-        run: cdk synth
+        run: cdk synth -v
