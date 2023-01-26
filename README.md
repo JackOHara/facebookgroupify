@@ -50,12 +50,6 @@ Before inserting a song into a Spotify playlist it checks DynamoDB to see if we 
 There is quite a lot of saving to S3 and triggering events happening in this app. There are a few reasons behind this but the most important one is **replayability** of events. If a component further down the pipeline is improved later on we can retrigger the processing of data at any stage in the pipeline and thus provide more content with greater matching accuracy.
 
 
-## Local Development
-**TODO** 
-```bash
-git clone https://github.com/JackOHara/facebookgroupify/
-```
-
 ## Schedule a New Group for Scraping
 
 New groups for scraping can be added in the deployment code. Adding the following snippet to our [infrastructure code](./lib/facebookgroupify.js) and deploying will create a CloudWatch event which will trigger a scraping job once a day for the group.
@@ -98,7 +92,7 @@ cdk deploy
 ## Deployment Prerequisites
 To set up the application for the first time you will need to securely store your Spotify API and Facebook credentials. The following steps explain how to do this.
 ### Spotify API Credentials 
-**TODO** Write script to retrieve them. 
+Create an app in the Spotify Developer console and retrieve the access token.
 ### Facebook
 To scrape Facebook the app uses your username and password, logs in and then saves the session cookies in SSM for later reuse. Multifactor authenication will need to be disabled to allow the app to login.
 ### Set credentials in SSM Parameter Store
@@ -143,4 +137,4 @@ aws ssm put-parameter \
 If you are using a shared AWS account you may want to use a KMS key that only your IAM user and the application has access to.
 
 ## Product Development
-Detailed explanations of the product, the future roadmap and the work to be done is documented in the [docs/product](./docs/product) folder. It's purpose is not just for organisation but it also acts as a scratch pad for any thoughts and ideas that come to my mind. 
+Detailed explanations of the product, the future roadmap and the work to be done is documented in the [docs/product](./docs/product) folder.
